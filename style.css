@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap");
 
 :root {
+  --global-leftright-padding: 8%;
+
   --font-weight-normal: 300;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
-  --color-dark-blue: #0f044c;
+  --color-dark-blue: #0a023a;
   --color-blue: #141e61;
   --color-grey-blue: #787a91;
   --color-whitesmoke: #eeeeee;
@@ -16,7 +18,9 @@ html {
 }
 
 html,
-button {
+button,
+input,
+textarea {
   font-family: "Outfit", "Segoe UI", sans-serif;
 }
 
@@ -43,13 +47,21 @@ h2 {
   font-size: 2rem;
 }
 
-h3 {
+button {
   font-weight: var(--font-weight-medium);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-weight: var(--font-weight-normal);
+  font-size: 1.3rem;
 }
 
 p,
-label {
+label,
+input,
+textarea,
+a {
   font-weight: var(--font-weight-normal);
   font-size: 1.2rem;
 }
@@ -60,6 +72,14 @@ ul li {
 
 a {
   text-decoration: none;
+  color: var(--color-blue);
+}
+
+button {
+  cursor: pointer;
+
+  background-color: var(--color-whitesmoke);
+  color: var(--color-blue);
 }
 
 /* 
@@ -74,34 +94,99 @@ header {
 }
 
 nav {
+  padding: 2rem var(--global-leftright-padding);
+  width: 100%;
+
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  position: fixed;
+
+  background-color: var(--color-dark-blue);
+  color: var(--color-whitesmoke);
+
+  z-index: 10;
 }
 
 nav > ul {
+  padding: 0 6.4rem 0 0;
+  
   display: flex;
   gap: 40px;
+}
+
+nav > ul li a {
+  padding: 1rem;
+
+  color: var(--color-whitesmoke);
+
+  transition: all 0.15s ease-out;
+}
+
+nav > ul li a:hover {
+  padding: 2.2rem 1rem;
+  background-color: var(--color-whitesmoke);
+  color: var(--color-dark-blue);
 }
 
 .hamburger-menu {
   display: none;
 }
 
+.ornament {
+  max-width: 500px;
+  margin: 0 auto;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 18%;
+
+  object-fit: contain;
+}
+
 main {
+  padding: 0 var(--global-leftright-padding);
+  margin-top: 3.3rem;
   height: 60vh;
-  min-height: 430px;
-  max-height: 900px;
+  min-height: 680px;
+  max-height: 800px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  text-align: center;
+
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url(/images/banner.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  color: var(--color-whitesmoke);
 }
 
 main > button {
-  padding: 0.8rem 1.7rem;
+  padding: 1rem 2.6rem;
+  margin-top: 1.5rem;
   width: fit-content;
+
+  border: none;
+  border-radius: 50px;
+
+  transition: all 0.15s ease-out;
+}
+
+main > button:hover {  
+  padding: 1rem 3.4rem;
+
+  background-color: var(--color-blue);
+  color: var(--color-whitesmoke);
 }
 
 /* 
@@ -110,10 +195,17 @@ main > button {
   -------------------------------------------------
 */
 
-/* Categories (display 4 using assymetrical grid) */
 .categories {
+  margin-top: 2rem;
+
   display: flex;
   flex-direction: column;
+  gap: 15px;
+}
+
+.categories-header,
+.category-list {
+  padding: 0 var(--global-leftright-padding);
 }
 
 .categories-header {
@@ -121,34 +213,108 @@ main > button {
   justify-content: space-between;
 }
 
+.categories-header button {
+  padding: 0;
+  border: none;
+
+  background-color: transparent;
+}
+
+.categories-header a {
+  transition: all 0.15s ease-out;
+}
+
+.categories-header a:hover {
+  padding: 0.5rem 2rem;
+
+  border-radius: 50px;
+
+  background-color: var(--color-blue);
+  color: var(--color-whitesmoke);
+}
+
 .category-list {
   display: grid;
   grid-template-areas:
     "category-1 category-1 category-2"
     "category-3 category-4 category-4";
-  grid-template-rows: 200px 200px;
-  gap: 12px;
+  grid-template-rows: 330px 220px;
+  gap: 25px;
 }
 
 .category {
   padding: 1rem;
-  border: 1px solid black;
+  border-radius: 12px;
+
+  color: var(--color-whitesmoke);
 }
 
 .category:nth-child(1) {
   grid-area: category-1;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0)
+    ),
+    url(/images/category_bed.jpg);
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 .category:nth-child(2) {
   grid-area: category-2;
+
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0)
+    ),
+    url(/images/category_table.jpg);
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .category:nth-child(3) {
   grid-area: category-3;
+
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0)
+    ),
+    url(/images/category_office_chairs.jpg);
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .category:nth-child(4) {
   grid-area: category-4;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0)
+    ),
+    url(/images/category_lighting.jpg);
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: right;
 }
 /* 
   -------------------------------------------------
@@ -156,11 +322,18 @@ main > button {
   -------------------------------------------------
 */
 
-/* Bestsellers (display 6 using symmetrical grid) */
 .bestsellers {
+  margin-top: 5rem;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 15px;
+}
+
+.bestsellers-header,
+.bestseller-list {
+  padding: 0 var(--global-leftright-padding);
 }
 
 .bestsellers-header {
@@ -168,11 +341,31 @@ main > button {
   justify-content: space-between;
 }
 
+.bestsellers-header button {
+  padding: 0;
+  border: none;
+
+  background-color: transparent;
+}
+
+.bestsellers-header a {
+  transition: all 0.15s ease-out;
+}
+
+.bestsellers-header a:hover {
+  padding: 0.5rem 2rem;
+
+  border-radius: 50px;
+
+  background-color: var(--color-blue);
+  color: var(--color-whitesmoke);
+}
+
 .bestseller-list {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 25px;
 }
 
 .item {
@@ -183,9 +376,12 @@ main > button {
 
 .item > img {
   width: 100%;
-  min-width: 150px;
+  min-width: 250px;
   height: 30vh;
-  min-height: 150px;
+  min-height: 180px;
+  max-height: 330px;
+
+  border-radius: 12px;
 
   object-fit: cover;
 }
@@ -194,11 +390,16 @@ main > button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 25px;
+}
+
+.item > article p {
+  font-weight: var(--font-weight-medium);
 }
 
 hr {
-  margin: 2rem auto;
+  margin: 3rem auto;
+  margin-bottom: 1.7rem;
   width: 87%;
 }
 
@@ -209,9 +410,14 @@ hr {
 */
 
 .newsletter {
-  padding: 1rem 0;
+  padding: 1rem var(--global-leftright-padding);
+  padding-bottom: 5rem;
+
   display: flex;
   flex-direction: column;
+  gap: 10px;
+
+  text-align: center;
 }
 
 .newsletter h2,
@@ -220,20 +426,82 @@ hr {
 }
 
 form {
+  margin-top: 1.5rem;
+  padding: 2.5rem 3rem;
+  align-self: center;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  border: 1px solid var(--color-grey-blue);
+  border-radius: 12px;
+}
+
+form input[type="text"],
+form input[type="email"] {
+  padding: 0.5rem;
+  height: 3.4rem;
+  width: 100%;
+
+  border: 1px solid var(--color-grey-blue);
+  border-radius: 10px;
 }
 
 form > div {
+  margin-top: 1.2rem;
+  width: 100%;
+
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   gap: 5px;
+  text-align: left;
+}
+
+form > div:first-child {
+  margin-top: 0;
+}
+
+form > div:nth-child(3) p {
+  width: 100%;
+}
+
+form > div:nth-child(3) section {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
 }
 
 form > div:nth-child(4) {
   flex-direction: row;
+  align-items: center;
   gap: 12px;
+}
+
+form textarea {
+  padding: 0.5rem;
+  width: 100%;
+  resize: none;
+
+  border: 1px solid var(--color-grey-blue);
+  border-radius: 10px;
+}
+
+form button {
+  padding: 1rem 2.6rem;
+  width: 100%;
+
+  border: none;
+  border-radius: 10px;
+
+  transition: all 0.15s ease-out;
+}
+
+form button:hover {
+  background-color: var(--color-blue);
+  color: var(--color-whitesmoke);
 }
 
 /* 
@@ -243,6 +511,180 @@ form > div:nth-child(4) {
 */
 
 footer {
+  padding: 2rem var(--global-leftright-padding);
+
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+
+  background-color: var(--color-dark-blue);
+  color: var(--color-whitesmoke);
+}
+
+footer p {
+  text-align: right;
+}
+
+/* 
+  -------------------------------------------------
+    MEDIA QUERIES
+  -------------------------------------------------
+*/
+
+@media screen and (min-width: 1500px) {
+  :root {
+    --global-leftright-padding: 14%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  :root {
+    --global-leftright-padding: 4%;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  :root {
+    --global-leftright-padding: 4%;
+  }
+
+  /* ----- HEADER ----- */
+  nav > ul {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .ornament {
+    max-width: 400px;
+  }
+
+  .sign-in {
+    display: none;
+  }
+
+  /* ----- CATEGORIES ----- */
+  .category-list {
+    grid-template-areas:
+      "category-1 category-1 ."
+      "category-2 category-2 category-2"
+      "category-3 category-3 ."
+      "category-4 category-4 category-4";
+    grid-template-rows: repeat(4, 200px);
+    gap: 25px;
+  }
+
+  .category:nth-child(1) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0)
+      ),
+      url(/images/category_bed.jpg);
+    background-position: right;
+  }
+
+  .category:nth-child(2) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0)
+      ),
+      url(/images/category_table.jpg);
+    background-position: right;
+  }
+
+  .category:nth-child(3) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0)
+      ),
+      url(/images/category_office_chairs.jpg);
+    background-position: right;
+  }
+
+  .category:nth-child(4) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0)
+      ),
+      url(/images/category_lighting.jpg);
+    background-position: right;
+  }
+
+  /* ----- BESTSELLERS ----- */
+  .bestseller-list {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .item > img {
+    min-width: 130px;
+    min-height: 120px;
+  }
+
+  /* ----- NEWSLETTER ----- */
+  form {
+    padding: 2rem 1.2rem;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  /* ----- GLOBAL ----- */
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 1.1rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  p,
+  label,
+  input,
+  textarea,
+  a {
+    font-size: 1.1rem;
+  }
+
+  /* ----- HEADER ----- */
+  .ornament {
+    max-width: 290px;
+    top: 22%;
+  }
+  /* ----- BESTSELLERS ----- */
+  .bestseller-list {
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  /* ----- NEWSLETTER ----- */
+  form {
+    padding: 1.3rem 0.8rem;
+  }
 }
