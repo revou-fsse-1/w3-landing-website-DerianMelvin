@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap");
+
+:root {
+  --font-weight-normal: 300;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --color-dark-blue: #0f044c;
+  --color-blue: #141e61;
+  --color-grey-blue: #787a91;
+  --color-whitesmoke: #eeeeee;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+button {
+  font-family: "Outfit", "Segoe UI", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  box-sizing: inherit;
+}
+
+/* 
+  -------------------------------------------------
+    GLOBAL
+  -------------------------------------------------
+*/
+
+h1 {
+  font-weight: var(--font-weight-bold);
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-weight: var(--font-weight-medium);
+  font-size: 2rem;
+}
+
+h3 {
+  font-weight: var(--font-weight-medium);
+  font-size: 1.4rem;
+}
+
+p,
+label {
+  font-weight: var(--font-weight-normal);
+  font-size: 1.2rem;
+}
+
+ul li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 
+  -------------------------------------------------
+    HEADER
+  -------------------------------------------------
+*/
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav > ul {
+  display: flex;
+  gap: 40px;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+main {
+  height: 60vh;
+  min-height: 430px;
+  max-height: 900px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+main > button {
+  padding: 0.8rem 1.7rem;
+  width: fit-content;
+}
+
+/* 
+  -------------------------------------------------
+    CATEGORIES
+  -------------------------------------------------
+*/
+
+/* Categories (display 4 using assymetrical grid) */
+.categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.categories-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-list {
+  display: grid;
+  grid-template-areas:
+    "category-1 category-1 category-2"
+    "category-3 category-4 category-4";
+  grid-template-rows: 200px 200px;
+  gap: 12px;
+}
+
+.category {
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.category:nth-child(1) {
+  grid-area: category-1;
+}
+
+.category:nth-child(2) {
+  grid-area: category-2;
+}
+
+.category:nth-child(3) {
+  grid-area: category-3;
+}
+
+.category:nth-child(4) {
+  grid-area: category-4;
+}
+/* 
+  -------------------------------------------------
+    BESTSELLERS
+  -------------------------------------------------
+*/
+
+/* Bestsellers (display 6 using symmetrical grid) */
+.bestsellers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bestsellers-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bestseller-list {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.item > img {
+  width: 100%;
+  min-width: 150px;
+  height: 30vh;
+  min-height: 150px;
+
+  object-fit: cover;
+}
+
+.item > article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+hr {
+  margin: 2rem auto;
+  width: 87%;
+}
+
+/* 
+  -------------------------------------------------
+    NEWSLETTER
+  -------------------------------------------------
+*/
+
+.newsletter {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletter h2,
+.newsletter p {
+  align-self: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+form > div:nth-child(4) {
+  flex-direction: row;
+  gap: 12px;
+}
+
+/* 
+  -------------------------------------------------
+    FOOTER
+  -------------------------------------------------
+*/
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
