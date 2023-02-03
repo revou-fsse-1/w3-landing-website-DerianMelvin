@@ -144,7 +144,7 @@ nav > ul li a:hover {
   position: absolute;
   left: 0;
   right: 0;
-  top: 18%;
+  top: 10rem;
 
   object-fit: contain;
 }
@@ -250,7 +250,15 @@ main > button:hover {
   padding: 1rem;
   border-radius: 12px;
 
+  display: flex;
+
   color: var(--color-whitesmoke);
+  transition: all 0.25s ease-out;
+}
+
+.category:hover {
+  cursor: pointer;
+  padding: 1.6rem 1.6rem;
 }
 
 .category:nth-child(1) {
@@ -320,6 +328,7 @@ main > button:hover {
   background-repeat: no-repeat;
   background-position: right;
 }
+
 /* 
   -------------------------------------------------
     BESTSELLERS
@@ -388,6 +397,12 @@ main > button:hover {
   border-radius: 12px;
 
   object-fit: cover;
+  transition: all 0.25s ease-in-out;
+}
+
+.item > img:hover {
+  cursor: pointer;
+  transform: scale(1.06, 1.06) translateY(-0.5rem);
 }
 
 .item > article {
@@ -583,10 +598,6 @@ footer p {
 }
 
 @media screen and (max-width: 860px) {
-  :root {
-    --global-leftright-padding: 4%;
-  }
-
   /* ----- HEADER ----- */
   nav > ul {
     display: none;
@@ -725,6 +736,7 @@ footer p {
     max-width: 290px;
     top: 22%;
   }
+
   /* ----- BESTSELLERS ----- */
   .bestseller-list {
     grid-template-rows: repeat(6, 1fr);
