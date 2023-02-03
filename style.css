@@ -82,6 +82,10 @@ button {
   color: var(--color-blue);
 }
 
+.logo {
+  height: 42px;
+}
+
 /* 
   -------------------------------------------------
     HEADER
@@ -110,7 +114,7 @@ nav {
 
 nav > ul {
   padding: 0 6.4rem 0 0;
-  
+
   display: flex;
   gap: 40px;
 }
@@ -182,7 +186,7 @@ main > button {
   transition: all 0.15s ease-out;
 }
 
-main > button:hover {  
+main > button:hover {
   padding: 1rem 3.4rem;
 
   background-color: var(--color-blue);
@@ -411,7 +415,7 @@ hr {
 
 .newsletter {
   padding: 1rem var(--global-leftright-padding);
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
 
   display: flex;
   flex-direction: column;
@@ -506,6 +510,34 @@ form button:hover {
 
 /* 
   -------------------------------------------------
+    STORE LOCATION
+  -------------------------------------------------
+*/
+
+.store-location {
+  padding: 1rem var(--global-leftright-padding);
+  padding-bottom: 5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  text-align: center;
+}
+
+.store-location iframe {
+  margin-top: 1rem;
+
+  width: 70%;
+  height: 500px;
+
+  border: 1px solid var(--color-grey-blue);
+  border-radius: 10px;
+}
+
+/* 
+  -------------------------------------------------
     FOOTER
   -------------------------------------------------
 */
@@ -541,6 +573,12 @@ footer p {
 @media screen and (max-width: 1200px) {
   :root {
     --global-leftright-padding: 4%;
+  }
+
+  /* ----- STORE LOCATION ----- */
+  .store-location iframe {
+    width: 77%;
+    height: 430px;
   }
 }
 
@@ -644,6 +682,12 @@ footer p {
   form {
     padding: 2rem 1.2rem;
   }
+
+  /* ----- STORE LOCATION ----- */
+  .store-location iframe {
+    width: 85%;
+    height: 400px;
+  }
 }
 
 @media screen and (max-width: 570px) {
@@ -672,6 +716,10 @@ footer p {
     font-size: 1.1rem;
   }
 
+  .logo {
+    height: 36px;
+  }
+
   /* ----- HEADER ----- */
   .ornament {
     max-width: 290px;
@@ -686,5 +734,11 @@ footer p {
   /* ----- NEWSLETTER ----- */
   form {
     padding: 1.3rem 0.8rem;
+  }
+
+  /* ----- STORE LOCATION ----- */
+  .store-location iframe {
+    width: 95%;
+    height: 320px;
   }
 }
